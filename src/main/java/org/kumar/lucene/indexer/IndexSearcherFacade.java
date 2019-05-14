@@ -22,7 +22,7 @@ public class IndexSearcherFacade {
     }
 
     public IndexSearcher getIndexSearcher() {
-        return this.indexSearcher;
+        return indexSearcher;
     }
 
 }
