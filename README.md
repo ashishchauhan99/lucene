@@ -1,6 +1,13 @@
 # lucene
 For learning different lucene library capabalities.
 
+# Goals
+- Show usage of StandardAnalyzer
+    - Extend Stop Word list    
+- Use HindiAnalyzer
+- Use StemFilter and SynonameFilter
+- Combine StemFilter and SynonameFilter with StandarAnalyzer
+
 # Example Reference         
 https://howtodoinjava.com/lucene/lucene-index-search-examples
 https://www.tutorialspoint.com/lucene/lucene_first_application.htm
@@ -33,4 +40,6 @@ Apache Tikka library is used in combination to Lucene to get content from rich d
 - TermVector.WITH_POSITIONS_OFFSETS—Stores unique terms and their counts, along with positions and offsets
 - Which one to use  Read here: https://stackoverflow.com/questions/13208609/which-term-vector-option-to-use-in-lucene 
 - Lucen in Action book also explain when to use which one
+
+        
 
