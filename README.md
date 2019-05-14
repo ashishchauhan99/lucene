@@ -24,7 +24,6 @@ Apache Tikka library is used in combination to Lucene to get content from rich d
 - Score of a Document can be manuplated by Boosting.
 - There are three type of boosting document.setBoost() , field.setBoost() , Query.setBoost().
 - Read this: https://lucene.apache.org/core/2_9_4/scoring.html
-<<<<<<< HEAD
 
 # Term Vector
 - When a custom field is defined it can be take one of the following TermVector value
