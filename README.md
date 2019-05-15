@@ -56,5 +56,14 @@ StringField name = new StringField("name", file.getName(), Store.YES);
 StringField fullPath = new StringField("fullPath", file.getAbsolutePath(), Store.YES);
 ```
 
-                  
+# MultiFieldQueryParser
+- MultiFieldQueryParser is used to look for the same value against different fields
 
+```
+Query query = MultiFieldQueryParser.parse(Version.LUCENE_30, new String[] {"harry potter","harry potter","harry potter"},   new String[] {"title","author","content"},new SimpleAnalyzer());
+IndexSearcher searcher = new IndexSearcher(...);
+Hits hits = searcher.search(query);                  
+```
+
+# QueryParser
+- syntax: https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Fuzzy%20Searches
