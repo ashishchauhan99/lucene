@@ -2,8 +2,10 @@ package org.kumar.lucene.indexer;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Set;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.FSDirectory;
@@ -18,8 +20,11 @@ public class IndexWriterFacade {
         indexWriter = new IndexWriter(dir, config);
     }
 
-    public IndexWriter getIndexWriter() {
-        return indexWriter;
+    public void createIndex(Set<Document> documents) throws IOException {
+        indexWriter.deleteAll();
+        indexWriter.addDocuments(documents);
+        indexWriter.commit();
+        indexWriter.close();
     }
 
 }

@@ -41,5 +41,20 @@ Apache Tikka library is used in combination to Lucene to get content from rich d
 - Which one to use  Read here: https://stackoverflow.com/questions/13208609/which-term-vector-option-to-use-in-lucene 
 - Lucen in Action book also explain when to use which one
 
-        
+# Creating Document and Field
+      
+- The following field will be used to tokenized the content of file and search against those token, it wil not store the whole content of that file. This field is not Term_Vector that means it will not play any role in sorting. All the sub class of {@ Field} are non Term_Vectored. If you want to define a field as Term_Vectored then use directly use constructor of {@ Field} and pass {@ IndexableFieldType} 
+
+```
+ TextField content = new TextField("content", "file-Content", Store.NO);
+```
+
+- We want to store the name of our file as Document part so it remains available in return result.
+
+```
+StringField name = new StringField("name", file.getName(), Store.YES);
+StringField fullPath = new StringField("fullPath", file.getAbsolutePath(), Store.YES);
+```
+
+                  
 
