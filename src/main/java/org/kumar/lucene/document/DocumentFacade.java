@@ -24,7 +24,6 @@ public class DocumentFacade {
         Set<Document> documents = new HashSet<Document>();
 
         for (File file : dataDir.listFiles()) {
-
             /**
              * FileReader is automatically closed by {@ IndexWriter#addDocuments} Reader is important to use to we do
              * not load everthing into memory.

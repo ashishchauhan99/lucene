@@ -67,3 +67,8 @@ Hits hits = searcher.search(query);
 
 # QueryParser
 - syntax: https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Fuzzy%20Searches
+
+# Luke
+-  This is a GUI for lucene. You can execute and test you quires with this.
+
+ 

@@ -7,10 +7,17 @@ import org.apache.lucene.search.TopDocs;
 
 public class QueryParserFacade {
 
-    public TopDocs getTopDocs(String query, IndexSearcher indexSearcher, Analyzer analyzer) {
-        QueryParser queryParser = new QueryParser(query, analyzer);
+    private IndexSearcher indexSearcher;
+    private QueryParser queryParser;
 
-        return null;
+    public QueryParserFacade(IndexSearcher indexSearcher, Analyzer analyzer) {
+        this.indexSearcher = indexSearcher;
+        this.queryParser = new QueryParser("", analyzer);
+    }
+
+    public TopDocs getTopDocs(String query) throws Exception {
+        TopDocs topDocs = indexSearcher.search(queryParser.parse(query), 10);
+        return topDocs;
     }
 
 }
