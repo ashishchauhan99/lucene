@@ -6,6 +6,7 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.TopDocs;
+import org.kumar.lucene.analyzer.StandardAnalyzerDemo;
 import org.kumar.lucene.document.DocumentFacade;
 import org.kumar.lucene.indexer.IndexSearcherFacade;
 import org.kumar.lucene.indexer.IndexWriterFacade;
@@ -18,14 +19,15 @@ public class LuceneStarter {
 
     public static void main(String[] args) throws Exception {
         LuceneStarter luceneStarter = new LuceneStarter();
-//        luceneStarter.createIndex();
-        String query = "content:(apples OR edureka) AND name:file2*";
-        luceneStarter.search(query);
+        luceneStarter.createIndex();
+//        String query = "content:(apples OR edureka) AND name:file2*";
+//        luceneStarter.search(query);
 
     }
 
     private void createIndex() throws IOException {
-        IndexWriterFacade indexWriterFacade = new IndexWriterFacade(indexDir, new StandardAnalyzer());
+        IndexWriterFacade indexWriterFacade =
+                new IndexWriterFacade(indexDir, StandardAnalyzerDemo.getStandardAnalyzer());
         DocumentFacade documentFacade = new DocumentFacade(dataDir);
         indexWriterFacade.createIndex(documentFacade.getPreparedDocuments());
     }

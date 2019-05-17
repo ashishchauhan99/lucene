@@ -1,9 +1,11 @@
 package org.kumar.lucene.analyzer;
 
-import org.apache.lucene.analysis.Analyzer;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.lucene.analysis.CharArraySet;
 import org.apache.lucene.analysis.hi.HindiAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.index.IndexWriterConfig;
 
 /**
  * 
@@ -27,16 +29,34 @@ import org.apache.lucene.index.IndexWriterConfig;
  */
 public class StandardAnalyzerDemo {
 
-    public void createStandardAnalyzerDemo() {
-        Analyzer standardAnalyzer = new StandardAnalyzer();
-        // Analyzer standardAnalyzerWithMoreStopWords = new StandardAnalyzer(new StringReader("Fuck"));
-        IndexWriterConfig indexWriterConfig = new IndexWriterConfig(standardAnalyzer);
+    private static StandardAnalyzer standardAnalyzer;
 
+    private StandardAnalyzerDemo() {
     }
 
-    public void createStandarHindiAnalzerDemo() {
-        Analyzer hindiAnalyzer = new HindiAnalyzer();
-        IndexWriterConfig indexWriterConfig = new IndexWriterConfig(hindiAnalyzer);
+    public static StandardAnalyzer getStandardAnalyzer() {
+
+        if (standardAnalyzer == null) {
+
+            Set<String> stopWords = new HashSet<String>();
+            stopWords.add("Just");
+            stopWords.add("Stop");
+            stopWords.add("These");
+            stopWords.add("Words");
+
+            CharArraySet stopWordsCharArraySet = new CharArraySet(stopWords, true);
+
+            /**
+             * A reader can be passed which reads a file, each line in a file will be a stop words
+             */
+            standardAnalyzer = new StandardAnalyzer(stopWordsCharArraySet);
+        }
+
+        return standardAnalyzer;
+    }
+
+    public HindiAnalyzer getHindiAnalyzer() {
+        return new HindiAnalyzer();
     }
 
 }
