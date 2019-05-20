@@ -71,4 +71,12 @@ Hits hits = searcher.search(query);
 # Luke
 -  This is a GUI for lucene. You can execute and test you quires with this.
 
+# Point to notice 
+- If you want to use stem filter then just use in build EnglishAnalyzer this includes the StemFilter with all stem words. Same for other langauges.
+- If you want to include Synonym Filter then you need to implement your own Analyzer and include this filter Just look StandardAnalyzer#createComponents    
+
+
+
+
+
  
